@@ -6,14 +6,14 @@ A PCL ORM for SQLite. Used in Xamarin or anything that supports PCLs.
 ### Lets do this!
 
 Couple things, this was built in about 3.5 days. It could likely be better
-in every way, but we needed a tool, so we built on. Probably most of
+in every way, but we needed a tool, so we built one. Probably most of
 the filtering could be done with Linq Expressions. Again, we needed this
 sooner rather than later, so the time was not spent to fully grasp how to
 compile those. Maybe later.
 
-This is likely not idomatic C#, coming from a Python background mostly
+This is likely not idomatic C#, coming from a Python background mostly,
 and this is a first go at it. Just needed a tool. and SQLite.NET + the
-Extension wasn't doing it for us.
+Extensions wasn't doing it for us.
 
 There is a LAUGHABLE excuse for SQL Escaping values. It handles the quotes
 and makes sure numbers are numbers. SQLitePCL.pretty (what the sqllite engine
