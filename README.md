@@ -20,8 +20,8 @@ and makes sure numbers are numbers. SQLitePCL.pretty (what the sqllite engine
 runs on) supports prepared statements, could have used those. Again time.
 In the end, this is for a DB the user controls. If they REALLY want to they
 can SQL inject themselves by whatever means they want. It's their data.
-That said, you shoudl not consdider this safe for a multiuser environment.
-Not that you dear reader would be using sqlite for a multi-user application
+That said, you should not consdider this safe for a multi-user environment.
+Not that you, dear reader, would be using sqlite for a multi-user application
 to begin with.
 
 
