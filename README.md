@@ -237,7 +237,7 @@ await session.Add(post);
 // write it
 await session.Commit();
 
-// Wait did it just save the foreign key too?
+// Wait, did it just save the foreign key too?!
 
 var verify = await session.Query<Post>()
                           .SelectRelated("Author")
