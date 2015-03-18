@@ -188,6 +188,14 @@ List<Author> test1 = await session.Query<Author>()
                                   .FilterBy(new And(new {FirstName = "Ollie", LastName = "Gato"}));
 ```
 
+You can see all the various operators for `FilterBy` here:
+
+https://github.com/blitzagency/amigo/blob/master/Amigo/ORM/Utils/Operators.cs
+
+and look in the tests here:
+
+https://github.com/blitzagency/amigo/blob/master/AmigoTests/TestOperators.cs
+
 
 #### Foreign Keys too!:
 
