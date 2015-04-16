@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Amigo.Sources</id>
+    <version>0.0.1</version>
+    <title>Amigo </title>
+    <authors>BLITZ, Adam Venturella, Dino Petrone</authors>
+    <owners>Adam Venturella, Dino Petrone</owners>
+    <licenseUrl>https://github.com/blitzagency/amigo</licenseUrl>
+    <projectUrl>https://github.com/blitzagency/amigo</projectUrl>
+    <iconUrl>https://avatars1.githubusercontent.com/u/989236?s=140</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Amigo sqlite ORM</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright &#x00A9; BLITZ. All rights reserved.</copyright>
+    <tags></tags>
+    <dependencies>
+      <dependency id="sqlitepcl"/>
+    </dependencies>
+  </metadata>
+  <files>
+      <file src="Amigo\**\*.*" exclude="**\*.log" target="content/Vendor/Amigo" />
+  </files>
+</package>
