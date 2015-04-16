@@ -1,11 +1,15 @@
 ﻿using NUnit.Framework;
+using System;
+using System.Reflection;
+using System.Linq;
+using System.Linq.Expressions;
 using Amigo.ORM.Engines;
 using Amigo.ORM.Utils;
+using Amigo.ORM;
 
 namespace AmigoTests
 {
     [TestFixture()]
-    [Ignore]
     public class TestQuerySet
     {
         [Test()]
@@ -116,6 +120,62 @@ namespace AmigoTests
             var sql = q.ToSql();
             //Assert.AreEqual(1, 2);
         }
+
+        //        [Test]
+        //        public void TestLinqFilters()
+        //        {
+        //            var meta = new MetaData();
+        //            meta.RegisterModel<Author>();
+        //            meta.RegisterModel<Post>();
+        //
+        //            var engine = new SqliteEngine();
+        //            var session = new Session(meta, engine);
+        //
+        //            var q = session.Query<Post>()
+        //                           .SelectRelated("Author")
+        //                           .Where<Author>((post, author) => post.Title == "Foo" && author.FirstName == "Lucy");
+        //
+        ////            var q = session.Query<Post>()
+        ////                .SelectRelated("Author")
+        ////                .Where("Foo");
+        //
+        //            var sql = q.LinqFilters.CompileExpression(meta);
+        //            //Expression<Func<Author,bool>> tgt = x => x.FirstName == "BLITZ" && x.LastName == "Agency";
+        //            //Expression<Func<Author,bool>> tgt = x => x.FirstName == "BLITZ" && x.Id == 5;
+        //
+        //            //Expression<Func<Post, Author, bool>> tgt = (post, author) => post.Title == "Foo" && author.FirstName == "Adam";
+        //
+        //            //var foo = tgt.Body.CompileExpression(meta);
+        //            var stop = 1;
+        ////            var exp = (LambdaExpression)tgt;
+        ////            var pred = exp.Body;
+        ////            var exprtype = exp.GetType();
+        ////            var predType = pred.GetType();
+        ////            var predNodeType = pred.NodeType;
+        ////
+        ////            if (pred is BinaryExpression)
+        ////            {
+        ////
+        ////                var left = ((BinaryExpression)pred).Left;
+        ////                var leftType = left.GetType();
+        ////
+        ////                if (left is BinaryExpression)
+        ////                {
+        ////                    var left2 = ((BinaryExpression)left).Left;
+        ////                    var left2Type = left2.GetType();
+        ////                    var stop = 1;
+        ////
+        ////                }
+        ////
+        ////
+        ////
+        ////            }
+        //
+        ////            var q = session.Query<Author>().LinqFilterBy(x => x.FirstName == "Adam");
+        ////            q.CompileFilters();
+        //
+        //
+        //        }
     }
 }
 

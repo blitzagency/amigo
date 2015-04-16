@@ -151,16 +151,20 @@ namespace Amigo.ORM.Utils
             }
         }
 
-        public MetaModel MetaModelForModel(object model)
+        public MetaModel MetaModelForType(Type type)
         {
             MetaModel metaModel;
-            var modelTypeName = model.GetType().Name;
-            Tables.TryGetValue(modelTypeName, out metaModel);
+            Tables.TryGetValue(type.Name, out metaModel);
 
             if (metaModel == null)
-                throw new Exception(string.Format("Unable to locate registered model for type '{0}'", modelTypeName));
+                throw new Exception(string.Format("Unable to locate registered model for type '{0}'", type.Name));
 
             return metaModel;
+        }
+
+        public MetaModel MetaModelForModel(object model)
+        {
+            return MetaModelForType(model.GetType());
         }
 
         public async Task CreateAllAsync(IAlchemyEngine engine)

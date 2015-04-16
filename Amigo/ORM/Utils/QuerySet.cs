@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.Collections.Generic;
@@ -8,6 +9,119 @@ using Amigo.ORM.Engines;
 
 namespace Amigo.ORM.Utils
 {
+    //    public static class LinqExtension
+    //    {
+    //        public static String CompileExpression(this Expression This, MetaData meta)
+    //        {
+    //            if (This is BinaryExpression)
+    //            {
+    //                var bin = (BinaryExpression)This;
+    //
+    //                var leftExpr = bin.Left.CompileExpression(meta);
+    //                var rightExpr = bin.Right.CompileExpression(meta);
+    //
+    //                return leftExpr + " " + GetSqlName(bin) + " " + rightExpr;
+    //            }
+    //            else if (This is ParameterExpression)
+    //            {
+    //                var param = (ParameterExpression)This;
+    //                return ":" + param.Name;
+    //            }
+    //            else if (This is ConstantExpression)
+    //            {
+    //                var value = This.EvaluateExpression(meta);
+    //                return Utils.EscapeSqlValue(value).ToString();
+    //            }
+    //            else if (This is MemberExpression)
+    //            {
+    //                var member = (MemberExpression)This;
+    //
+    //                if (member.Expression != null && member.Expression.NodeType == ExpressionType.Parameter)
+    //                {
+    //                    // This is a column in the table, output the column name
+    //                    var info = (PropertyInfo)member.Member;
+    //                    var metaModel = meta.MetaModelForType(info.DeclaringType);
+    //                    var column = metaModel.Columns.FirstOrDefault(x => x.PropertyName == info.Name);
+    //                    if (column == null)
+    //                        throw new Exception(string.Format("Unknown Column {0} on type {1}",
+    //                            info.Name, metaModel.Table.TypeName));
+    //
+    //                    return string.Format("'{0}.{1}'", metaModel.Table.TableName, column.ColumnName);
+    //                }
+    //                else
+    //                {
+    //                    var x = member.EvaluateExpression(meta);
+    //
+    //                    return "";
+    //                }
+    //            }
+    //
+    //            throw new NotSupportedException("Cannot compile: " + This.NodeType.ToString());
+    //        }
+    //
+    //        public static object EvaluateExpression(this Expression expr, MetaData meta)
+    //        {
+    //            if (expr is ConstantExpression)
+    //            {
+    //                var c = (ConstantExpression)expr;
+    //                return c.Value;
+    //            }
+    //            else if (expr is MemberExpression)
+    //            {
+    //                var memberExpr = (MemberExpression)expr;
+    //                var obj = EvaluateExpression(memberExpr.Expression, meta);
+    //
+    //                if (memberExpr.Member is PropertyInfo)
+    //                {
+    //                    var m = (PropertyInfo)memberExpr.Member;
+    //                    return m.GetValue(obj, null);
+    //                }
+    //                else if (memberExpr.Member is FieldInfo)
+    //                {
+    //                    var m = (FieldInfo)memberExpr.Member;
+    //                    return m.GetValue(obj);
+    //                }
+    //            }
+    //            else if (expr is ParameterExpression)
+    //            {
+    //                return meta.MetaModelForType(expr.Type);
+    //            }
+    //
+    //            throw new NotSupportedException("Cannot compile: " + expr.NodeType.ToString());
+    //        }
+    //
+    //        public static string GetSqlName(Expression prop)
+    //        {
+    //            var n = prop.NodeType;
+    //
+    //            switch (n)
+    //            {
+    //            case ExpressionType.GreaterThan:
+    //                return ">";
+    //            case ExpressionType.GreaterThanOrEqual:
+    //                return ">=";
+    //            case ExpressionType.LessThan:
+    //                return "<";
+    //            case ExpressionType.LessThanOrEqual:
+    //                return "<=";
+    //            case ExpressionType.And:
+    //                return "&";
+    //            case ExpressionType.AndAlso:
+    //                return "AND";
+    //            case ExpressionType.Or:
+    //                return "|";
+    //            case ExpressionType.OrElse:
+    //                return "OR";
+    //            case ExpressionType.Equal:
+    //                return "=";
+    //            case ExpressionType.NotEqual:
+    //                return "!=";
+    //            default:
+    //                throw new NotSupportedException("Cannot get SQL for: " + n);
+    //            }
+    //        }
+    //    }
+    //
     public static class Utils
     {
         public static Regex Quotes = new Regex("\'", RegexOptions.Multiline);
@@ -50,6 +164,7 @@ namespace Amigo.ORM.Utils
         public IAlchemyEngine Engine { get; set; }
         public MetaData Meta { get; set; }
         public object PivotModel { get; set; }
+        public Expression LinqFilters { get; set; }
 
 
         public QuerySet(IAlchemyEngine engine)
@@ -79,6 +194,36 @@ namespace Amigo.ORM.Utils
         {
             return 1;
         }
+
+        //        public QuerySet<T> Where(object foo)
+        //        {
+        //            return this;
+        //        }
+        //
+        //        public QuerySet<T> Where(Expression<Func<T,bool>> predExpr)
+        //        {
+        //            var exp = (LambdaExpression)predExpr;
+        //            var pred = exp.Body;
+        //            LinqFilters = LinqFilters == null ? pred : Expression.AndAlso(LinqFilters, pred);
+        //
+        //            return this;
+        //        }
+        //
+        //        public QuerySet<T> Where<U>(Expression<Func<T, U, bool>> predExpr)
+        //        {
+        //            var exp = (LambdaExpression)predExpr;
+        //            var pred = exp.Body;
+        //            LinqFilters = LinqFilters == null ? pred : Expression.AndAlso(LinqFilters, pred);
+        //
+        //            return this;
+        //        }
+
+        //        public void CompileFilters()
+        //        {
+        //            var filters = LinqFilters;
+        //            var foo = 1;
+        //        }
+
 
         public QuerySet<T> FilterBy(object kwargs)
         {

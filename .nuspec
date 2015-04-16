@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Amigo.Sources</id>
+    <id>Amigo.Portable</id>
     <version>0.0.1</version>
-    <title>Amigo </title>
+    <title>Amigo</title>
     <authors>BLITZ, Adam Venturella, Dino Petrone</authors>
     <owners>Adam Venturella, Dino Petrone</owners>
     <licenseUrl>https://github.com/blitzagency/amigo</licenseUrl>
     <projectUrl>https://github.com/blitzagency/amigo</projectUrl>
     <iconUrl>https://avatars1.githubusercontent.com/u/989236?s=140</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Amigo sqlite ORM</description>
+    <description>Amigo SQLite ORM</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright &#x00A9; BLITZ. All rights reserved.</copyright>
     <tags></tags>
@@ -19,6 +19,7 @@
     </dependencies>
   </metadata>
   <files>
-      <file src="Amigo\**\*.*" exclude="**\*.log" target="content/Vendor/Amigo" />
+      <!-- portable -->
+    <file src="Amigo\bin\$Configuration$\Amigo.dll" target="lib\portable-net45+win+wp80+MonoAndroid10+MonoTouch10\Amigo.Portable.dll" />
   </files>
 </package>

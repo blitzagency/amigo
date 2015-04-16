@@ -169,7 +169,6 @@ namespace AmigoTests
             var expected = "INSERT INTO 'author' ('firstname','lastname') VALUES \n('Adam', 'Venturella');";
 
             StringAssert.AreEqualIgnoringCase(value, expected);
-
         }
     }
 }
