@@ -75,9 +75,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Amigo\Amigo.csproj">
+    <ProjectReference Include="..\Amigo\Amigo.Portable.csproj">
       <Project>{8F7DF6FF-64A5-4ABB-9BCF-48C7B9839B28}</Project>
-      <Name>Amigo</Name>
+      <Name>Amigo.Portable</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

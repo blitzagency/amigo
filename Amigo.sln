@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amigo", "Amigo\Amigo.csproj", "{8F7DF6FF-64A5-4ABB-9BCF-48C7B9839B28}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amigo.Portable", "Amigo\Amigo.Portable.csproj", "{8F7DF6FF-64A5-4ABB-9BCF-48C7B9839B28}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmigoTests", "AmigoTests\AmigoTests.csproj", "{73720507-A099-42DD-AD5E-3E3B239F5A88}"
 EndProject
